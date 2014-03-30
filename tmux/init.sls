@@ -28,8 +28,7 @@ tmux_mem_cpu:
     - cwd: {{ tmux_conf_path }}/tony-config
     - shell: true
     - timeout: 600
-    - unless
-      - test -x /usr/local/bin/tmux-mem-cpu
+    - unless: test -x /usr/local/bin/tmux-mem-cpu
     - require:
       - git: tmux_conf
   file.managed:
