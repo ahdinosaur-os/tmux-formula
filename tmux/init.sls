@@ -21,10 +21,10 @@ tmux_conf:
 tmux_mem_cpu:
   cmd.run:
     - name: |
-      cd {{ tmux_conf_path }}/tony-config
-      cmake .
-      make
-      make install
+        cd {{ tmux_conf_path }}/tony-config
+        cmake .
+        make
+        make install
     - cwd: {{ tmux_conf_path }}/tony-config
     - shell: true
     - timeout: 600
