@@ -4,7 +4,7 @@
     'conf_name': 'tmux.conf',
   },
   'default': {
-    'share_dir': '/usr/share/tmux'
+    'share_dir': '/usr/share/tmux',
     'conf_name': '.tmux.conf',
   },
 }, merge=salt['pillar.get']('tmux:lookup')) %}
