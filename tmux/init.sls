@@ -28,8 +28,16 @@ tmux_mem_cpu:
     - unless: "test -x /usr/local/bin/tmux-mem-cpu"
     - require:
       - git: tmux_conf
+      - pkg: cmake
+      - pkg: make
   file.managed:
     - name: /usr/local/bin/tmux-mem-cpu
     - mode: 755
     - require:
       - cmd: tmux_mem_cpu
+
+cmake:
+  pkg.installed
+
+make:
+  pkg.installed
