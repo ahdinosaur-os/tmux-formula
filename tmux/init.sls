@@ -3,7 +3,7 @@
 tmux:
   pkg.installed
 
-{% set tmux_conf_path = "%s/%s" % (tmux.share_dir, tmux_conf_name) %}
+{% set tmux_conf_path = "%s/%s" % (tmux.share_dir, tmux.conf_name) %}
 tmux_conf:
   file.symlink:
     - name: {{ tmux_conf_path }}
