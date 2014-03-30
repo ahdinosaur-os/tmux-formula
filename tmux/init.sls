@@ -3,16 +3,17 @@
 tmux:
   pkg.installed
 
+{% set tmux_conf_path = "%s/%s" % (tmux.share_dir, tmux_conf_name) %}
 tmux_conf:
   file.symlink:
-    - name: {{ tmux.share_dir }}/{{ tmux.conf_name }}
-    - target: {{ tmux.tmux_conf }}/tony-config/.tmux.conf
+    - name: {{ tmux_conf_path }}
+    - target: {{ tmux_conf_path }}/tony-config/.tmux.conf
     - require:
       - pkg: tmux
       - git: tmux_conf
   git.latest:
     - name: https://github.com/tony/tmux-config
-    - target: {{ tmux.tmux_conf }}/tony-config
+    - target: {{ tmux_conf_path }}/tony-config
     - submodules: True
     - require:
       - pkg: tmux
@@ -20,11 +21,11 @@ tmux_conf:
 tmux_mem_cpu:
   cmd.run:
     - name: |
-      cd {{ tmux.tmux_conf }}/tony-config
+      cd {{ tmux_conf_path }}/tony-config
       cmake .
       make
       make install
-    - cwd: {{ tmux.tmux_conf }}/tony-config
+    - cwd: {{ tmux_conf_path }}/tony-config
     - shell: true
     - timeout: 600
     - unless
