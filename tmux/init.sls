@@ -24,7 +24,7 @@ tmux_mem_cpu:
       - cmake .
       - make
       - make install
-    - cwd: {{ tmux_tony }}
+    - cwd: {{ tmux_tony }}/vendor/tmux-mem-cpu-load
     - unless: "test -x /usr/local/bin/tmux-mem-cpu"
     - require:
       - git: tmux_conf
