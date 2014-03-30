@@ -20,16 +20,14 @@ tmux_conf:
 
 tmux_mem_cpu:
   cmd.run:
-    - name: |
-        cd {{ tmux_tony }}
-        cmake .
-        make
-        make install
+    - names:
+      - cmake .
+      - make
+      - make install
     - cwd: {{ tmux_tony }}
     - shell: True
     - timeout: 600
-    - unless:
-      - test -x /usr/local/bin/tmux-mem-cpu
+    - unless: test -x /usr/local/bin/tmux-mem-cpu
     - require:
       - git: tmux_conf
   file.managed:
