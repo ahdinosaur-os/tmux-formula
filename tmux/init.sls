@@ -14,7 +14,7 @@ tmux_config_local:
     - name: {{ home }}/{{ tmux.conf_name }}
     - source: salt://tmux/tmux.conf
     - template: jinja
-    - context: {{ user }}
+    - context: {{ user |yaml_encode }}
     - defaults:
       conf: ""
     - mode: 644
