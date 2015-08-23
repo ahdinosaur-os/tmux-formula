@@ -1,10 +1,6 @@
 {% set tmux = salt['grains.filter_by']({
-  'Debian': {
-    'share_dir': '/etc',
-    'conf_name': 'tmux.conf',
-  },
   'default': {
-    'share_dir': '/usr/share/tmux',
-    'conf_name': '.tmux.conf',
+    'pkg': 'tmux',
+    'conf_name': '.tmux.conf'
   },
 }, merge=salt['pillar.get']('tmux:lookup')) %}
