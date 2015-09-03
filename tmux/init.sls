@@ -16,7 +16,7 @@ tmux_config_local:
     - template: jinja
     - context: {{ user | json() }}
     - defaults:
-      conf: ""
+        conf: ""
     - mode: 644
     - user: {{ name }}
     - group: {{ name }}
